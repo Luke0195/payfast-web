@@ -23,7 +23,7 @@ export const useRestaurantHook = ():RestaurantHookProps => {
     setLoading(true)
     console.log(form.getValues());
     try{
-      const response = await restaurantService.loadBySlug({ slug: 'any_name'});
+      const response = await restaurantService.loadBySlug({ slug: form.getValues().slug});
       console.log(response);
     }catch(error){
       console.log(error);

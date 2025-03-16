@@ -30,7 +30,7 @@ export default function Home() {
         </Link>
         </div>
         <Button 
-         className='w-full my-2 font-bold bg-purple-500 h-10 hover:bg-purple-400 text-base disabled:bg-gray-400  text-white'
+         className='w-full my-2 font-bold bg-purple-500 h-10 hover:bg-purple-400 text-base disabled:bg-gray-400 cursor-not-allowed text-white'
          type='submit'
          disabled={loading || !isValid}
         > {loading ? 
