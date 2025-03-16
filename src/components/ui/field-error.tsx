@@ -3,7 +3,7 @@ type FieldErrorProps = {
 }
 export function FielError(props:FieldErrorProps){
   if(!props.message) return;
-  return <div className="my-2 p-4 bg-red-400 rounded-lg">
-    <span className="text-red-600"> {props.message}</span>
+  return <div className="my-1  rounded-md w-full text-center">
+    <span className="text-red-400"> {props.message}</span>
   </div>
 }

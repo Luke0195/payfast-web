@@ -6,13 +6,13 @@ import { useRestaurantHook } from './modules/restaurant'
 import { Controller } from 'react-hook-form'
 
 export default function Home() {
-  const { form } = useRestaurantHook();
-  const { control, formState: { errors } } = form;
+  const { form, handleCheckRestaurant, loading  } = useRestaurantHook();
+  const { control, formState: { errors, isValid  }, handleSubmit, } = form;
   return (
     <div className="w-screen h-screen flex flex-col items-center justify-center bg-black ">
       <h1 className="text-gray-300 font-bold text-4xl flex items-center gap-x-4"> Fast Pay <FaMoneyBill size={40} color="green"/> </h1>
       <p className='my-2 text-gray-300'> Gerencie os pedidos dos seus clientes de forma eficiente.</p>
-      <form className='w-96'>
+      <form className='w-96' onSubmit={handleSubmit(handleCheckRestaurant)}>
         <div className='w-full'>
           <Label htmlFor='restaraunt' className='text-white font-bold my-2'>
             Restaurante*
@@ -29,7 +29,16 @@ export default function Home() {
             <span className='text-white'> Não possui conta?</span>
         </Link>
         </div>
-        <Button className='w-full my-2 font-bold bg-purple-500 h-11 text-base disabled:bg-gray-400 text-white'> Logar </Button>
+        <Button 
+         className='w-full my-2 font-bold bg-purple-500 h-10 hover:bg-purple-400 text-base disabled:bg-gray-400  text-white'
+         type='submit'
+         disabled={loading || !isValid}
+        > {loading ? 
+            <svg className="mr-3 size-5 animate-spin ..." viewBox="0 0 24 24">
+            <span> Processando</span>
+            </svg>
+          : 'Logar'
+        } </Button>
       </form>
     </div>
   );
