@@ -1,3 +1,3 @@
 export interface AuthenticationFormData {
-  slug?: string
+  slug: string
 }
