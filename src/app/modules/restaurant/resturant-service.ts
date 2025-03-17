@@ -1,11 +1,15 @@
 import { RestaurantResponseData } from '@app/app/dtos/restaurant';
-import { LoadRestaurantBySlug } from '@app/app/features/restaurant/load-restaurant-byslug'
+import { LoadRestaurantBySlug, AddRestaurant  } from '@app/app/features/restaurant'
 import { HttpClientService } from '@app/app/shared/http/http-client';
 
 
-class RestaurantService implements LoadRestaurantBySlug{
+class RestaurantService implements LoadRestaurantBySlug, AddRestaurant{
 
   constructor(private readonly httpClientService: HttpClientService){ }
+  add(params: AddRestaurant.Params): Promise<void> {
+    console.log(params);
+    throw new Error('Method not implemented.');
+  }
 
   async loadBySlug({ slug }: LoadRestaurantBySlug.Params): Promise<RestaurantResponseData> {
     const response = await this.httpClientService.request({ url: `http://localhost:8080/api/restaurants?slug=${slug}`, method: 'GET'});
